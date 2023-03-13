@@ -20,6 +20,7 @@ type bank struct {
 	State         string `json:"state"`
 	Zip           string `json:"zip"`
 	Phone         string `json:"phone"`
+	Message       string `json:"message"`
 }
 
 var banks = []bank{}
@@ -36,6 +37,7 @@ func getBankByRoutingNumber(c *gin.Context) {
 		if a.RoutingNumber == routingNumber {
 			num, _ := libphonenumber.Parse(string(a.Phone), "US")
 			a.Phone = libphonenumber.Format(num, libphonenumber.NATIONAL)
+			a.Message = "OK"
 			c.Header("Access-Control-Allow-Origin", "*")
 			c.IndentedJSON(http.StatusOK, a)
 			return
