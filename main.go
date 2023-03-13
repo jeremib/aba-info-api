@@ -25,6 +25,7 @@ type bank struct {
 var banks = []bank{}
 
 func getBanks(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
 
 	c.IndentedJSON(http.StatusOK, banks)
 }
@@ -35,20 +36,23 @@ func getBankByRoutingNumber(c *gin.Context) {
 		if a.RoutingNumber == routingNumber {
 			num, _ := libphonenumber.Parse(string(a.Phone), "US")
 			a.Phone = libphonenumber.Format(num, libphonenumber.NATIONAL)
+			c.Header("Access-Control-Allow-Origin", "*")
 			c.IndentedJSON(http.StatusOK, a)
 			return
 		}
 	}
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "bank not found"})
 
 }
 
 func health(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
 	c.IndentedJSON(http.StatusOK, "up")
 }
 
 func main() {
-
+	gin.SetMode(gin.ReleaseMode)
 	var filename string
 
 	if len(os.Args) < 2 {
