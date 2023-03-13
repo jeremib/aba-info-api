@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 
@@ -42,9 +43,21 @@ func getBankByRoutingNumber(c *gin.Context) {
 
 }
 
+func health(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, "up")
+}
+
 func main() {
 
-	file, _ := ioutil.ReadFile("data/banks.json")
+	var filename string
+
+	if len(os.Args) < 2 {
+		filename = "data/banks.json"
+	} else {
+		filename = os.Args[1]
+	}
+
+	file, _ := ioutil.ReadFile(filename)
 
 	err := json.Unmarshal(file, &banks)
 
@@ -53,8 +66,9 @@ func main() {
 	}
 
 	router := gin.Default()
+	router.GET("/health", health)
 	router.GET("/banks", getBanks)
 	router.GET("/banks/:routing", getBankByRoutingNumber)
 
-	router.Run("localhost:8080")
+	router.Run(":8080")
 }
