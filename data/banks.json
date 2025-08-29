@@ -65911,11 +65911,11 @@
 	},
 	{
 		"routing_number": "084304968",
-		"bank": "FARMERS BANK",
-		"address": "PO BOX 50",
-		"city": "WOODLAND MILLE",
+		"bank": "BANK3",
+		"address": "5210 Poplar Avenue, Ste 100	",
+		"city": "Memphis",
 		"state": "TN",
-		"zip": "38271",
+		"zip": "38119",
 		"zip4": "0000",
 		"phone": "7318851911"
 	},
@@ -145691,7 +145691,7 @@
 	},
 	{
 		"routing_number": "263191387",
-		"bank": "BRANCH BANKING AND TRUST CO",
+		"bank": "TRUIST",
 		"address": "100-99-04-10",
 		"city": "WILSON",
 		"state": "NC",
