@@ -65912,7 +65912,7 @@
 	{
 		"routing_number": "084304968",
 		"bank": "BANK3",
-		"address": "5210 Poplar Avenue, Ste 100	",
+		"address": "5210 Poplar Avenue, Ste 100",
 		"city": "Memphis",
 		"state": "TN",
 		"zip": "38119",
@@ -82750,6 +82750,16 @@
 		"phone": "4052865700"
 	},
 	{
+		"routing_number": "103013376",
+		"bank": "WATERMARK BANK",
+		"address": "6501 N Classen Blvd Ste 300",
+		"city": "OKLAHOMA CITY",
+		"state": "OK",
+		"zip": "73116",
+		"zip4": "0000",
+		"phone": "4058106210"
+	},
+	{
 		"routing_number": "103013062",
 		"bank": "ROSE ROCK BANK",
 		"address": "320 N MAIN",
@@ -83301,8 +83311,8 @@
 	},
 	{
 		"routing_number": "103101877",
-		"bank": "CITIZENS BANK OF OKLAHOMA",
-		"address": "101 EAST 8TH ST.",
+		"bank": "Blue Sky Bank",
+		"address": "101 E 8th St",
 		"city": "PAWHUSKA",
 		"state": "OK",
 		"zip": "74056",
