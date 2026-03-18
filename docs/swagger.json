@@ -1,0 +1,134 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API for looking up bank information by routing number",
+        "title": "Routing Number API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/banks": {
+            "get": {
+                "description": "Get a list of all banks with their routing numbers and information",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "banks"
+                ],
+                "summary": "List all banks",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/main.bank"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/banks/{routing}": {
+            "get": {
+                "description": "Get bank information for a specific routing number",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "banks"
+                ],
+                "summary": "Get bank by routing number",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Routing Number",
+                        "name": "routing",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.bank"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/health": {
+            "get": {
+                "description": "Check if the API is running",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "health"
+                ],
+                "summary": "Health check",
+                "responses": {
+                    "200": {
+                        "description": "up",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.bank": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "bank": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "routing_number": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zip": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
